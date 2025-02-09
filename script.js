@@ -1,9 +1,13 @@
-import {computeButton, addRowButton} from "./data.js";
+import {computeButton, addRowButton} from "./buttons.js";
+
+// All Button Clicks
 addRowButton.addEventListener("click", addRow);
 computeButton.addEventListener("click", computeTotalCost);
-   
+
+// Variable
 let weekCounter = 1;
 
+// Function - Adding Row
 function addRow() {
     const rowsContainer = document.getElementById("rows");
     const row = document.createElement("div");
@@ -24,11 +28,13 @@ function addRow() {
     weekCounter++; // Increment week counter
 }
 
+// Function - Compute Total Cost
 function computeTotalCost() {
     const machineHoursInputs = document.querySelectorAll(".machine-hours");
     const maintenanceCostInputs = document.querySelectorAll(".maintenance-cost");
 
-    if (machineHoursInputs.length < 2) {
+    if (machineHoursInputs.length < 2) 
+    {
         alert("Please enter at least two data points.");
         return;
     }
@@ -39,31 +45,40 @@ function computeTotalCost() {
     machineHoursInputs.forEach((input, index) => {
         const hours = parseFloat(input.value);
         const cost = parseFloat(maintenanceCostInputs[index].value);
-        //Step 1
-        if (!isNaN(hours) && !isNaN(cost)) {
-            if (hours < minHours) {
+
+        // Step 1 - Getting the min and max of machine hours and maintenance cost
+        if (!isNaN(hours) && !isNaN(cost)) 
+        {
+            if (hours < minHours) 
+            {
                 minHours = hours;
                 minCost = cost;
             }
 
-            if (hours > maxHours) {
+            if (hours > maxHours) 
+            {
                 maxHours = hours;
                 maxCost = cost;
             }
         }
     });
 
-    if (maxHours === minHours) {
+    if (maxHours === minHours) 
+    {
         alert("Invalid input: machine hours must have different values.");
         return;
     }
 
+    // Step 2 - Getting the Variable Cost per hour
     const variableCostPerHour = (maxCost - minCost) / (maxHours - minHours);
+
+    // Step 3 and 4 - Computing
     const fixedCost = maxCost - (variableCostPerHour * maxHours);
 
     const targetHours = parseFloat(prompt("Enter machine hours to estimate cost:"));
 
-    if (isNaN(targetHours)) {
+    if (isNaN(targetHours)) 
+    {
         alert("Invalid input. Please enter a number.");
         return;
     }
