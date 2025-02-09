@@ -1,8 +1,9 @@
-import {computeButton, addRowButton} from "./buttons.js";
+import {computeButton, addRowButton, resetButton} from "./buttons.js";
 
 // All Button Clicks
 addRowButton.addEventListener("click", addRow);
 computeButton.addEventListener("click", computeTotalCost);
+resetButton.addEventListener("click", resetFunction);
 
 // Variable
 let weekCounter = 1;
@@ -47,8 +48,6 @@ function computeTotalCost() {
         const cost = parseFloat(maintenanceCostInputs[index].value);
 
         // Step 1 - Getting the min and max of machine hours and maintenance cost
-        if (!isNaN(hours) && !isNaN(cost)) 
-        {
             if (hours < minHours) 
             {
                 minHours = hours;
@@ -60,21 +59,29 @@ function computeTotalCost() {
                 maxHours = hours;
                 maxCost = cost;
             }
-        }
     });
 
+    // Validation - If have the same values.
     if (maxHours === minHours) 
     {
         alert("Invalid input: machine hours must have different values.");
         return;
     }
 
+    // Validation - If there are no values. All should cells should have values.
+    if (minHours == 0 || minCost == 0)
+        {
+            alert("Can't Compute Total Cost. Please enter values.");
+            return;
+        }
+
     // Step 2 - Getting the Variable Cost per hour
     const variableCostPerHour = (maxCost - minCost) / (maxHours - minHours);
 
-    // Step 3 and 4 - Computing
+    // Step 3 - Computing fixed cost
     const fixedCost = maxCost - (variableCostPerHour * maxHours);
 
+    // Prompt - Enter machine hours
     const targetHours = parseFloat(prompt("Enter machine hours to estimate cost:"));
 
     if (isNaN(targetHours)) 
@@ -83,6 +90,17 @@ function computeTotalCost() {
         return;
     }
 
+    // Step 4 - Computing the cost
     const estimatedCost = fixedCost + (variableCostPerHour * targetHours);
+
+    // Result 
     alert(`Estimated Maintenance Cost at ${targetHours} hours: $${estimatedCost.toFixed(2)}`);
+}
+
+// Function - Reset Function of list
+function resetFunction() {
+    // Resets the list
+    document.getElementById("rows").innerHTML = "";
+    // Resets the week
+    weekCounter = 1;
 }

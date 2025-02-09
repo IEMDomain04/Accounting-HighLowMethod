@@ -1,36 +1,13 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-h1 {
-    padding: 1rem;
-    border: 2px solid black;
-    text-align: center;
-}
-
-.row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin-bottom: 10px;
-}
-
-.row input, .row button {
-    padding: 10px;
-}
-
-.row .remove-row {
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #header {
     display: flex;
     justify-content: center;
-    margin-bottom: 5rem;
+    margin: 2rem 0;
 }
 
 #contents {
@@ -39,7 +16,152 @@ h1 {
     align-items: center;
 }
 
+#buttons {
+    margin-bottom: 1rem
+}
+
+#buttons .add-btn {
+    margin-right: 1rem;
+    background-color: rgb(103, 240, 103);
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#buttons .add-btn:hover {
+    transform: scale(.9);
+}
+
+#buttons .add-btn:active {
+    background-color: rgb(69, 160, 69);
+}
+
+#buttons .compute-btn {
+    margin-right: 1rem;
+    background-color: rgb(203, 218, 255);
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#buttons .compute-btn:hover {
+    transform: scale(.9);
+}
+
+#buttons .compute-btn:active {
+    background-color: rgb(143, 157, 194);
+}
+
+#buttons .reset-btn {
+    background-color: rgb(255, 200, 238);
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#buttons .reset-btn:hover {
+    transform: scale(.9);
+}
+
+#buttons .reset-btn:active {
+    background-color: rgb(210, 88, 167);
+}
+
 #table-grid {
+    width: 80%;
+    display: grid;
+    gap: 1rem;
+}
+
+.row-header, .row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.row-header {
+    font-weight: bold;
+    font-size: 15px;
+    border-bottom: 2px solid #000;
+}
+
+.row-header h1, .row input, .row button {
+    margin: 0;
+    padding: 1rem;
+}
+
+.row input {
     width: 100%;
-    max-width: 800px;
+    box-sizing: border-box;
+}
+
+.row .remove-row {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#mobile-message {
+    display: none;
+}
+
+@media (max-width: 720px) {
+    .row-header {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 480px) {
+    #header {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+    }
+
+    #table-grid {
+        margin-right: 4rem;
+    }
+
+    #buttons .add-btn {
+        font-size: 10px;
+        margin-right: 1rem;
+        background-color: rgb(103, 240, 103);
+        border: 2px solid grey;
+        border-radius: 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: .3s;
+    }
+    
+    #buttons .compute-btn {
+        font-size: 10px;     
+        margin-right: 1rem;
+        background-color: rgb(203, 218, 255);
+        border: 2px solid grey;
+        border-radius: 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: .3s;
+    }
+    
+    #buttons .reset-btn {
+        font-size: 10px;
+        background-color: rgb(255, 200, 238);
+        border: 2px solid grey;
+        border-radius: 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: .3s;
+    }
 }

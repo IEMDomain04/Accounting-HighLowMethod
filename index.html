@@ -7,26 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
+    <main id="desktop-content">
         <header id="header">
             <h2>High-Low Method</h2>
         </header>
 
         <section id="contents">
+
             <section id="buttons">
-                <button id="addRowButton">Add Row</button>
-                <button id="computeButton">Compute Total Cost</button>
+                <button class="add-btn" id="addRowButton">Add Row</button>
+                <button class="compute-btn" id="computeButton">Compute Total Cost</button>
+                <button class="reset-btn" id="resetButton">Reset List</button>
             </section>
 
             <section id="table-grid">
-                <div class="row header">
+                
+                <div class="row-header">
                     <h1>Week</h1>
                     <h1>Machine Hours</h1>
                     <h1>Maintenance Cost</h1>
                     <h1>Remove</h1>
                 </div>
-                <div id="rows">
-                </div>
+
+                <div id="rows"></div>
+
             </section>
         </section>
     </main>
