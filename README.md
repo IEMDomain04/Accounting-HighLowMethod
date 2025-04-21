@@ -20,3 +20,5 @@ A program featuring High-Low Method.<br />
 #### Step 4
 - How much is the total maintenance cost at 8200 machine hours?<br /><br />
 ![image](https://github.com/user-attachments/assets/b505bedc-2530-4d8a-bc87-f91fff43772f)
+
+This is just a preparation for Accounting Module.
